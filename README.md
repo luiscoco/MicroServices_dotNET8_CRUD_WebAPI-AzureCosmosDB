@@ -2,14 +2,6 @@
 
 The code for this example is available in this github repo: https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB
 
-## 0. Prerequisites
-
-- Install Docker Desktop
-
-- Install Visual Studio 2022 Community Edition version 17.8
-
-- Install Studio 3T Free for MongoDB
-
 ## 1. Create Azure CosmosDB
 
 We navigate to **Azure CosmosDB** service and we click in this option to create a new account:
