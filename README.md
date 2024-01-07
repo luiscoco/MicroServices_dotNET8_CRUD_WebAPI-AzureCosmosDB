@@ -161,7 +161,63 @@ app.MapControllers();
 app.Run();
 ```
 
-## 5. CosmosDbService.cs
+## 5. Models
+
+**Item.cs**
+
+```csharp
+using Newtonsoft.Json;
+
+namespace AzureCosmosCRUDWebAPI.Models
+{
+    public class Family
+    {
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+        [JsonProperty(PropertyName = "partitionKey")]
+        public string PartitionKey { get; set; }
+        public string LastName { get; set; }
+        public Parent[] Parents { get; set; }
+        public Child[] Children { get; set; }
+        public Address Address { get; set; }
+        public bool IsRegistered { get; set; }
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+    }
+
+    public class Parent
+    {
+        public string FamilyName { get; set; }
+        public string FirstName { get; set; }
+    }
+
+    public class Child
+    {
+        public string FamilyName { get; set; }
+        public string FirstName { get; set; }
+        public string Gender { get; set; }
+        public int Grade { get; set; }
+        public Pet[] Pets { get; set; }
+    }
+
+    public class Pet
+    {
+        public string GivenName { get; set; }
+    }
+
+    public class Address
+    {
+        public string State { get; set; }
+        public string County { get; set; }
+        public string City { get; set; }
+    }
+
+}
+```
+
+## 6. CosmosDbService.cs
 
 Pay attention we set the **PartitionKey** "/Id"
 
@@ -241,62 +297,6 @@ namespace AzureCosmosCRUDWebAPI.Services
             return results;
         }
     }
-}
-```
-
-## 6. Models
-
-**Item.cs**
-
-```csharp
-using Newtonsoft.Json;
-
-namespace AzureCosmosCRUDWebAPI.Models
-{
-    public class Family
-    {
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-        [JsonProperty(PropertyName = "partitionKey")]
-        public string PartitionKey { get; set; }
-        public string LastName { get; set; }
-        public Parent[] Parents { get; set; }
-        public Child[] Children { get; set; }
-        public Address Address { get; set; }
-        public bool IsRegistered { get; set; }
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-    }
-
-    public class Parent
-    {
-        public string FamilyName { get; set; }
-        public string FirstName { get; set; }
-    }
-
-    public class Child
-    {
-        public string FamilyName { get; set; }
-        public string FirstName { get; set; }
-        public string Gender { get; set; }
-        public int Grade { get; set; }
-        public Pet[] Pets { get; set; }
-    }
-
-    public class Pet
-    {
-        public string GivenName { get; set; }
-    }
-
-    public class Address
-    {
-        public string State { get; set; }
-        public string County { get; set; }
-        public string City { get; set; }
-    }
-
 }
 ```
 
