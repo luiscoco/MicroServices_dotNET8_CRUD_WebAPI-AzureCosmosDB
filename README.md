@@ -380,3 +380,13 @@ namespace AzureCosmosCRUDWebAPI.Controllers
     }
 }
 ```
+
+## 8. Application verification
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/88a464da-356b-4e4d-b87a-4fc9acd50ae0)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/e4b9029e-9e68-4fe9-bc8d-7bbddb2c817c)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/8242696a-9065-4ab7-8e45-83aa4e833289)
+
+
