@@ -75,6 +75,10 @@ See the new item inserted:
 
 We copy the **DatabaseId** and **ContainerId** 
 
+**DatabaseId**: ToDoList
+
+**ContainerId**: Items
+
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/d6a8f159-1ec9-4128-b20c-3655cebcb158)
 
 We copy the **URI** and **Primary Key** 
