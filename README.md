@@ -83,10 +83,24 @@ We copy the **URI** and **Primary Key**
 
 This is the **appsettings.json** file
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/b2583be5-9685-4557-9076-79f7307e94e7)
 
 ```json
-
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "CosmosDb": {
+    "AccountEndpoint": "https://mycosmosdbluis1974.documents.azure.com:443/",
+    "AccountKey": "ytnpxhMMKcs0XHkTTDhdohicyBHA1EwPFIcU8ZNSGmoH0DAXy3QaCZDW9Wxa8kzW7U3xBybEMUkUACDbiMyyyQ==",
+    "DatabaseName": "ToDoList",
+    "ContainerName": "Items"
+  },
+  "AllowedHosts": "*"
+}
 ```
 
 ## 4. Program.cs
