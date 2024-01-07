@@ -95,12 +95,7 @@ This is the new item json file:
         "County": "Orange",
         "City": "Irvine"
     },
-    "IsRegistered": true,
-    "_rid": "XMY-ANSl+9YBAAAAAAAAAA==",
-    "_self": "dbs/XMY-AA==/colls/XMY-ANSl+9Y=/docs/XMY-ANSl+9YBAAAAAAAAAA==/",
-    "_etag": "\"070004bc-0000-0e00-0000-659aff640000\"",
-    "_attachments": "attachments/",
-    "_ts": 1704656740
+    "IsRegistered": true
 }
 ```
 
