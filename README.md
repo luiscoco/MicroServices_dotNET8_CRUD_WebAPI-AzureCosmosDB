@@ -79,7 +79,9 @@ We copy the **DatabaseId** and **ContainerId**
 
 We copy the **URI** and **Primary Key** 
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/10b9296e-6005-4a2c-9be3-9225ce19abe6)
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/ef892457-f775-4145-9260-6ce44b931dd1)
 
 This is the **appsettings.json** file
 
