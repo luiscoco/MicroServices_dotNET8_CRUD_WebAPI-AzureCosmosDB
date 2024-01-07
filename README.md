@@ -53,7 +53,7 @@ We also create a **New Container**
 
 ## 2. Insert the new items in the Azure CosmosDB
 
-This is the new item json file:
+This is the **new item** json file:
 
 ```json
 {
