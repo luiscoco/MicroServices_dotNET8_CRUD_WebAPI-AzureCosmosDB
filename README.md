@@ -71,7 +71,7 @@ See the new item inserted:
 
 
 
-## 3. Update the appsettings.json file
+## 3. appsettings.json
 
 We copy the **DatabaseId** and **ContainerId** 
 
