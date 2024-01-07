@@ -109,22 +109,6 @@ Pay attention we set the **PartitionKey** "/Id"
 
 ```
 
-**BookStoreDatabaseSettings.cs**
-
-```csharp
-namespace BookStoreApi.Models
-{
-    public class BookStoreDatabaseSettings
-    {
-        public string ConnectionString { get; set; } = null!;
-
-        public string DatabaseId { get; set; } = null!;
-
-        public string ContainerId { get; set; } = null!;
-    }
-}
-```
-
 ## 7. Controller
 
 ```csharp
