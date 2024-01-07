@@ -112,23 +112,192 @@ This is the **appsettings.json** file
 ## 4. Program.cs
 
 ```csharp
+using Microsoft.Azure.Cosmos;
+using AzureCosmosCRUDWebAPI.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Diagnostics;
+using Newtonsoft.Json;
 
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllers();
+
+// Cosmos DB Configuration
+var cosmosDbConfig = builder.Configuration.GetSection("CosmosDb");
+builder.Services.AddSingleton<CosmosClient>(s =>
+    new CosmosClient(cosmosDbConfig["AccountEndpoint"], cosmosDbConfig["AccountKey"]));
+builder.Services.AddSingleton<CosmosDbService>(s =>
+    new CosmosDbService(s.GetRequiredService<CosmosClient>(), cosmosDbConfig["DatabaseName"], cosmosDbConfig["ContainerName"]));
+
+// Add other necessary services like Swagger if needed
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseExceptionHandler(a => a.Run(async context =>
+{
+    var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+    var exception = exceptionHandlerPathFeature?.Error;
+
+    var result = JsonConvert.SerializeObject(new { error = exception?.Message });
+    context.Response.ContentType = "application/json";
+    await context.Response.WriteAsync(result);
+}));
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();
 ```
 
-## 5. BookService.cs
+## 5. CosmosDbService.cs
 
 Pay attention we set the **PartitionKey** "/Id"
 
 ```csharp
+using Microsoft.Azure.Cosmos;
+using AzureCosmosCRUDWebAPI.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using Newtonsoft.Json;
 
+namespace AzureCosmosCRUDWebAPI.Services
+{
+    public class CosmosDbService
+    {
+        private Container _container;
+
+        public CosmosDbService(CosmosClient dbClient, string databaseName, string containerName)
+        {
+            this._container = dbClient.GetContainer(databaseName, containerName);
+        }
+
+        public async Task AddItemAsync(Family item)
+        {
+            try
+            {
+                await this._container.CreateItemAsync(item, new PartitionKey(item.PartitionKey));
+            }
+            catch (CosmosException ex)
+            {
+                Console.WriteLine($"Cosmos DB error in AddItemAsync. Status code: {ex.StatusCode}, Message: {ex.Message}, StackTrace: {ex.StackTrace}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in AddItemAsync: {ex.Message}, StackTrace: {ex.StackTrace}");
+                throw;
+            }
+        }
+
+        // Read an item by id
+        public async Task<Family> GetItemAsync(string id, string partitionKeyValue)
+        {
+            try
+            {
+                ItemResponse<Family> response = await this._container.ReadItemAsync<Family>(id, new PartitionKey(partitionKeyValue));
+                return response.Resource;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+        }
+
+        // Update an existing item
+        public async Task UpdateItemAsync(string id, Family item)
+        {
+            await this._container.UpsertItemAsync(item, new PartitionKey(id));
+        }
+
+        // Delete an item
+        public async Task DeleteItemAsync(string id, string partitionKeyValue)
+        {
+            await this._container.DeleteItemAsync<Family>(id, new PartitionKey(partitionKeyValue));
+        }
+
+        // List all items
+        public async Task<IEnumerable<Family>> GetItemsAsync(string queryString)
+        {
+            var query = this._container.GetItemQueryIterator<Family>(new QueryDefinition(queryString));
+            List<Family> results = new List<Family>();
+            while (query.HasMoreResults)
+            {
+                var response = await query.ReadNextAsync();
+                results.AddRange(response.ToList());
+            }
+            return results;
+        }
+    }
+}
 ```
 
 ## 6. Models
 
-**Book.cs**
+**Item.cs**
 
 ```csharp
+using Newtonsoft.Json;
 
+namespace AzureCosmosCRUDWebAPI.Models
+{
+    public class Family
+    {
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+        [JsonProperty(PropertyName = "partitionKey")]
+        public string PartitionKey { get; set; }
+        public string LastName { get; set; }
+        public Parent[] Parents { get; set; }
+        public Child[] Children { get; set; }
+        public Address Address { get; set; }
+        public bool IsRegistered { get; set; }
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+    }
+
+    public class Parent
+    {
+        public string FamilyName { get; set; }
+        public string FirstName { get; set; }
+    }
+
+    public class Child
+    {
+        public string FamilyName { get; set; }
+        public string FirstName { get; set; }
+        public string Gender { get; set; }
+        public int Grade { get; set; }
+        public Pet[] Pets { get; set; }
+    }
+
+    public class Pet
+    {
+        public string GivenName { get; set; }
+    }
+
+    public class Address
+    {
+        public string State { get; set; }
+        public string County { get; set; }
+        public string City { get; set; }
+    }
+
+}
 ```
 
 ## 7. Controller
