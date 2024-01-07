@@ -40,6 +40,8 @@ We also create a **New Container**: Items
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/10e1d766-9c53-4ab0-9624-52f257340480)
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/95de1c25-49b8-496b-b3bb-bdeab06980ad)
+
 ## 2. Insert the new items in the Azure CosmosDB
 
 This is the **new item** json file:
