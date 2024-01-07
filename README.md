@@ -44,7 +44,7 @@ We first create a **New Database**
 
 
 
-We input the DatabaseId
+We input the **DatabaseId**
 
 
 
