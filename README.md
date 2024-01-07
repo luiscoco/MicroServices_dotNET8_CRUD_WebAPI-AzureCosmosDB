@@ -27,7 +27,7 @@ In following screen we input the required data for creating the service
 
 We create a new **ResourceGroup name**: myRG
 
-We set the **account name**: myazuremongodbaccount
+We set the **account name**: mycosmosdbluis1974
 
 We choose the service **location**: France Central
 
@@ -36,6 +36,8 @@ Capacity mode: **serverless**
 
 
 We navigate to the **Data Explorer** page and we create a **New Database** and a **New Container**
+
+
 
 We first create a **New Database**
 
