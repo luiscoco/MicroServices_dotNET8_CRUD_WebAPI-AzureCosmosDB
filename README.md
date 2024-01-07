@@ -14,14 +14,15 @@ The code for this example is available in this github repo: https://github.com/l
 
 We navigate to **Azure CosmosDB** service and we click in this option to create a new account:
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/3822db85-173d-411d-8383-7f97d07c05f4)
 
 We click on **Azure CosmosDB account** button
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/c1080788-bfc0-445e-9084-ce0f0772044a)
 
 Now we select the option **Azure Cosmos DB for NoSQL**, and we press the **create** button
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/69182e3f-9493-41a8-ab6b-92308a9bdddf)
 
 In following screen we input the required data for creating the service
 
@@ -33,11 +34,11 @@ We choose the service **location**: France Central
 
 Capacity mode: **serverless**
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/ed5a1407-0303-44b3-b528-7a7fc1398d80)
 
 We navigate to the **Data Explorer** page and we create a **New Database** and a **New Container**
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/fcc35ed4-cd30-490c-8147-10475e4d3e38)
 
 We first create a **New Database**
 
