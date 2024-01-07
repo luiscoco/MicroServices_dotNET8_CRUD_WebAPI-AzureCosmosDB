@@ -42,11 +42,9 @@ We navigate to the **Data Explorer** page and we create a **New Database** and a
 
 We first create a **New Database**
 
-
-
 We input the **DatabaseId**
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/978b2f67-01c3-4711-95fd-e0eeb75a99c1)
 
 We also create a **New Container**
 
