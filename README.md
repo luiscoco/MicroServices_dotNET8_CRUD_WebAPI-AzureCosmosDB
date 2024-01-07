@@ -56,7 +56,52 @@ We also create a **New Container**
 This is the new item json file:
 
 ```json
-
+{
+    "id": "1",
+    "partitionKey": "pk001",
+    "LastName": "Smith",
+    "Parents": [
+        {
+            "FamilyName": "Smith",
+            "FirstName": "John"
+        },
+        {
+            "FamilyName": "Smith",
+            "FirstName": "Jane"
+        }
+    ],
+    "Children": [
+        {
+            "FamilyName": "Smith",
+            "FirstName": "Emma",
+            "Gender": "Female",
+            "Grade": 5,
+            "Pets": [
+                {
+                    "GivenName": "Buddy"
+                }
+            ]
+        },
+        {
+            "FamilyName": "Smith",
+            "FirstName": "Mike",
+            "Gender": "Male",
+            "Grade": 8,
+            "Pets": []
+        }
+    ],
+    "Address": {
+        "State": "California",
+        "County": "Orange",
+        "City": "Irvine"
+    },
+    "IsRegistered": true,
+    "_rid": "XMY-ANSl+9YBAAAAAAAAAA==",
+    "_self": "dbs/XMY-AA==/colls/XMY-ANSl+9Y=/docs/XMY-ANSl+9YBAAAAAAAAAA==/",
+    "_etag": "\"070004bc-0000-0e00-0000-659aff640000\"",
+    "_attachments": "attachments/",
+    "_ts": 1704656740
+}
 ```
 
 We click in **Items** and then **New Item**
