@@ -1,4 +1,4 @@
-# How to create a .NET8 WebAPI CRUD Azure CosmosDB for MongoDB Microservice
+# How to create a .NET8 WebAPI CRUD Azure CosmosDB Microservice
 
 The code for this example is available in this github repo: https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB
 
