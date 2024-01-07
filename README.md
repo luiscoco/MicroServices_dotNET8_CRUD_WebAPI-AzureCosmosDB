@@ -48,7 +48,7 @@ We input the **DatabaseId**
 
 We also create a **New Container**
 
-
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/10e1d766-9c53-4ab0-9624-52f257340480)
 
 ## 2. Insert the new items in the Azure CosmosDB
 
