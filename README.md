@@ -246,8 +246,6 @@ namespace AzureCosmosCRUDWebAPI.Models
 
 ## 6. CosmosDbService.cs
 
-Pay attention we set the **PartitionKey** "/Id"
-
 ```csharp
 using Microsoft.Azure.Cosmos;
 using AzureCosmosCRUDWebAPI.Models;
